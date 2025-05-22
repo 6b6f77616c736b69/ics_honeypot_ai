@@ -1,0 +1,33 @@
+.dark {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.dark {
+  mark {
+    color: #FFFFFF;
+    background-color: #0B191D;  
+  }
+
+  a {
+    color: #71191D;
+    text-decoration: none;
+    text-decoration-color: #ff0000;
+    transition: text-decoration-color 0.3s ease, color 0.3s ease; 
+  }
+
+  a:hover {
+    color: #ff0000; /* Change color to green on hover */
+    text-decoration-color: #ff0000; /* Change underline color to green on hover */
+}
+
+ h1{
+  color: #71191D; 
+ }
+
+ h2{
+  color:  #FFFFFF; 
+ }
+
+}
+

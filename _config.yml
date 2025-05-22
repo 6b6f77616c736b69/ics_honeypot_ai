@@ -1,0 +1,354 @@
+# Site
+repository: Git repository where your resume will be hosted, only required if you are hosting on GitHub (eg. sproogen/modern-resume-theme)
+# favicon: Directory of your favicon (eg. images/favicon.ico)(optional)
+
+# Content configuration version
+version: 2
+
+# Personal info
+name: by > David Ramirez
+
+
+# Dark Mode (true/false/never)
+darkmode: never
+
+# About Section
+about_title: Enhancing OT Security Through Real PLC-Based Honeypots and AI-Driven Threat Detection
+#about_profile_image: images/Profile.jpeg
+about_content: | # this will include new lines to allow paragraphs
+  In the face of increasingly sophisticated threats targeting industrial control systems (ICS), traditional perimeter defenses are no longer sufficient. This paper introduces an approach to ICS threat detection: deploying real Programmable Logic Controllers (PLCs) as honeypots in operational technology (OT) networks, isolated from production systems but exposed within the IT/DMZ layer. Combined with a custom Django-based dashboard for centralized monitoring and analysis, and enhanced by an AI-driven detection engine, this solution offers a cost-effective, high-fidelity deception system capable of identifying intrusions, profiling attacker behavior, and learning from global threat patterns. By leveraging machine learning models trained on real attacker traffic, the platform enables proactive, adaptive threat detection and helps organizations strengthen their cyber resilience in complex industrial environments.
+
+  This project proposes the following approach to ICS/OT cybersecurity: the deployment of real industrial honeypots using actual PLC hardware, monitored and managed through a centralized web-based platform. Unlike traditional deception systems that simulate OT behavior, our solution uses physical PLCs in isolated network segments, offering attackers a realistic target and defenders valuable insight into malicious behavior.
+  The project is designed as a low-cost, high-impact tool for early threat detection in critical industrial environments, particularly suitable for small and medium-sized infrastructures lacking resources for full enterprise-grade security platforms.
+
+  **Problem Statement**
+  <br>
+  Industrial environments are facing an escalating wave of cyber threats, including advanced persistent threats (APTs), ransomware campaigns, and automated scanning tools that actively seek vulnerable ICS/OT assets. A common attack path involves lateral movement from compromised IT networks into the operational environment, where security controls are often weaker or non-existent.
+
+  Despite this growing risk, early detection of intrusions within OT networks remains a critical gap. Traditional perimeter defenses, such as firewalls, antivirus software, and endpoint protection, are ineffective once the attacker gains internal access or bypasses segmentation controls.
+
+  Moreover, most small and mid-sized industrial operators lack dedicated OT cybersecurity solutions, and very few implement any form of deception technology or behavioral threat detection in their ICS networks. This leaves attackers free to scan, enumerate, and even interact with PLCs and other industrial devices without being detected.
+  There is a pressing need for a cost-effective, low-risk solution that can:
+
+  - Detect unauthorized access attempts,
+  - Identify attacker behavior early,
+  - Provide actionable intelligence,
+  - And continuously adapt through learning from real-world attack patterns.
+
+  This is where the proposed solution, real PLC-based honeypots with centralized AI-enhanced detection, offers a game-changing approach to protecting critical infrastructure.
+
+
+  **Foundations and Rationale**
+  <br>
+
+  **The Expanding ICS Threat Landscape**
+  <br>
+  Modern industrial environments are increasingly interconnected, merging IT systems, cloud services, and OT operations into hybrid networks. This convergence has significantly expanded the attack surface of critical infrastructure. Threat actors, including nation-state APTs, ransomware groups, and automated scanners, actively target industrial protocols such as Modbus, DNP3, S7Comm, and EtherNet/IP.
+
+  Most attacks begin within the IT network, where attackers establish a foothold and conduct reconnaissance. From there, they attempt lateral movement into the OT environment, where traditional security tools often provide limited visibility or are entirely absent.
+
+  **Deception as a Proactive Defensive Strategy**
+  <br>
+  Honeypots are a proven method for detecting threats that bypass or evade conventional perimeter defenses. In ICS networks, any interaction with a honeypot device is inherently anomalous, making it an ideal early-warning system.
+
+  Deception-based detection does not rely on signature updates or predefined rules. Instead, it traps attackers through behavioral triggers, revealing their presence, methods, and intentions.
+
+  **Why Realism Matters: Physical PLCs vs. Simulation**
+  <br>
+  Many existing ICS honeypots, such as Conpot or HoneyPLC—are software-based emulations. While useful for basic detection, these simulated environments often suffer from:
+
+  - Limited protocol support.
+
+  - Static or unrealistic responses.
+
+  - Detectable behavioral inconsistencies.
+
+  - Lack of real timing, state handling, or session depth.
+
+  By contrast, this project uses real PLC hardware from multiple vendors, ensuring full protocol compliance and authentic behavior. This dramatically increases the fidelity of attacker interaction, making it more likely to capture advanced tactics, techniques, and procedures (TTPs) that are critical for threat analysis and AI model training.
+
+  **Safe and Isolated Deployment Architecture**
+  <br>
+  The PLC honeypots are never connected to actual production OT networks. They are isolated within a controlled lab environment, and exposed to attacker traffic virtually through secure tunneling into client IT or DMZ zones.
+
+  This deployment model:
+
+  - Prevents lateral pivoting into production assets.
+
+  - Ensures no disruption to operational processes.
+
+  - Allows full monitoring and control from a centralized platform.
+
+  - Enables clients to benefit from deception and detection with zero risk to operations.
+
+  **Foundation for AI-Powered Threat Detection**
+  <br>
+  By deploying high-fidelity honeypots across diverse environments and capturing real attacker behavior, the system creates a valuable, labeled dataset. This data enables the training of machine learning models for:
+  - Behavioral anomaly detection.
+
+  - Protocol misuse classification.
+
+  - Sequence-based TTP prediction.
+
+  This turns honeypots from passive traps into active intelligence collectors, powering AI-driven early detection and continuous improvement.
+  
+  <br>
+  **Project Concept and Differentiation**
+  <br>
+
+  **A Real Honeypot Using Physical ICS Hardware**
+
+  This project introduces a honeypot system built on real industrial hardware, specifically, physical PLCs from multiple vendors (e.g., Siemens, Allen-Bradley, Schneider, etc.). These devices are deployed in a controlled lab environment, yet projected into client networks through secure tunnels, making them appear as locally reachable assets within the IT or DMZ zone.
+
+  Unlike software-based honeypots, this system uses live, protocol-compliant devices that attackers perceive as legitimate targets. The honeypots are continuously monitored and analyzed by a centralized platform built with Django, providing real-time insights and actionable intelligence.
+  
+  Core Capabilities:
+  - Attracts unauthorized scans and probing attempts aimed at OT systems.
+
+  - Captures full interaction data at the protocol level (e.g., Modbus, S7Comm, DNP3).
+
+  - Analyzes attacker behavior.
+
+  - Triggers real-time alerts for suspicious or abnormal activity.
+
+  - Supports forensic investigation with structured, timestamped logs.
+
+  This is not a simulation. It is a real, isolated device acting as a decoy, monitored continuously in a safe, non-intrusive manner.
+  
+  **Why This Approach Matters**
+  <br>
+  **High-Fidelity Deception:**
+  By using real PLCs, the system provides complete protocol compliance and realistic behavior, overcoming the limitations of traditional simulated honeypots (e.g., Conpot, HoneyPLC).
+  <br>
+  **Early Threat Visibility:**
+  Every interaction with the honeypot is inherently suspicious. This allows early detection of lateral movement, insider threats, or malware exploring the OT attack surface.
+  <br>
+  **Safe by Design:**
+  The honeypots are deployed in a segmented environment, fully isolated from production systems. This ensures zero impact on operations while maintaining visibility in attack paths.
+  <br>
+  **Accessible for SMEs:**
+  While enterprise OT security platforms like Dragos or Claroty are often out of reach for small and mid-sized operators, this solution offers a low-cost, high-impact alternative, deployable remotely with minimal infrastructure requirements.
+  <br>
+
+  **Industry Context and Strategic Relevance**
+
+  The MITRE ATT&CK for ICS framework identifies reconnaissance and lateral movement as key stages in modern ICS-targeted attacks. This solution directly addresses these phases with minimal friction.
+
+  The NIS2 Directive (EU) and other cybersecurity mandates worldwide are increasing pressure on critical infrastructure operators to implement proactive monitoring and detection capabilities.
+
+  Recent malware campaigns, TRITON, INDUSTROYER2, HAVEX, have shown that attackers actively target OT protocols and engineering workstations. This platform offers an effective way to detect and analyze such behaviors before damage occurs.
+
+  What makes this approach even more powerful is the ability to learn from the attackers. By capturing real, diverse interaction data across multiple client environments, the platform builds a unique dataset that powers AI-based threat detection. This positions the system not just as a trap, but as an evolving cyber threat intelligence and defense engine.
+
+  <br>
+  **System Architecture – Centralized ICS Honeypot with Remote Projection**
+
+  The system is architected as a centralized honeypot laboratory, where real PLCs from multiple vendors are hosted in a secure, controlled environment. These devices are then virtually projected into client networks via encrypted tunnels, making them appear as locally reachable assets within the client’s IT or DMZ zones.
+
+  This approach eliminates the need to deploy physical equipment on-site, significantly reducing operational overhead and accelerating client onboarding. At the same time, it ensures full visibility into malicious activity targeting OT assets, without introducing risk to production environments.
+
+  **Architecture Overview**
+          
+          [Client Network (DMZ or IT)]
+          │
+          ├── Lightweight Connector Agent
+          │    - Encrypted Tunnel (WireGuard, SSH Reverse Tunnel, or ZeroTier)
+          │    - Routes specific IPs/ports to the centralized honeypot lab
+          ↓
+          [Secure Internet Tunnel]
+                ↓
+          [Central ICS Honeypot Lab]
+            ├─ Siemens *
+            ├─ Allen-Bradley *
+            ├─ Schneider Electric * 
+            ├─ Modbus TCP/IP Slave Devices
+            ├─ Traffic Collector (Zeek, tcpdump, PyShark)
+            └─ Django-Based Analytics Platform
+                  ├─ Per-client dashboards
+                  ├─ TTP mapping (MITRE ATT&CK for ICS)
+                  ├─ Real-time alerts and reporting engine
+                  └─ Optional SIEM/API integration
+
+  <br>
+  **Security and Isolation by Design**
+  - Honeypots are logically segmented by client using namespaces or virtual routing tables.
+
+  - No production assets are ever connected to the honeypots.
+
+  - All inbound access occurs through controlled, encrypted tunnels initiated from the client side.
+
+  - The system is continuously monitored, and honeypot behavior is updated remotely for maximum deception fidelity.
+
+  **Use of Vulnerable or Legacy PLC Models**
+
+  To maximize attacker interaction and behavioral data diversity, the platform intentionally incorporates:
+
+  - PLCs with outdated firmware or legacy protocol stacks.
+
+  - Devices known to be frequently scanned or targeted by malware.
+
+  - Minimal hardening (e.g., default configurations) within controlled conditions.
+
+  This increases the likelihood that threat actors, whether bots, APTs, or insiders, will interact with the honeypots, revealing real-world tactics, techniques, and procedures (TTPs) that can later be used for detection, forensics, and AI training.
+
+  **Flexible Tunnel Projection Options**
+
+  | Method                   | Description                                  | Best For                            |
+  | ------------------------ | -------------------------------------------- | ----------------------------------- |
+  | **WireGuard VPN**        | Lightweight, high-performance VPN            | Most clients; reliable and fast     |
+  | **SSH Reverse Tunnel**   | Easy to set up on restrictive networks       | Clients behind strict firewalls     |
+  | **ZeroTier / Tailscale** | Overlay networks with built-in NAT traversal | Fast onboarding, no config required |
+
+  Each method ensures that honeypots can be “seen” from the client’s network as if they were on-site, without ever leaving your secured infrastructure.
+
+  **Data Collection and Analysis Flow**
+
+  - Traffic targeting honeypots is captured by passive sensors (Zeek, tcpdump, or custom Python collectors).
+
+  - Parsed logs are structured and tagged.
+
+  - Logs are stored in the Django platform and visualized per client.
+
+  - AI models (when enabled) analyze behavior and score sessions for anomaly detection.
+
+  - Alerts and forensic data are made available to the client in real-time or via scheduled reports.
+
+  **AI Strategy: Global Threat Intelligence and Real-Time Detection**
+
+  **A New Approach to ICS Threat Detection:**
+  This platform goes beyond honeypots,it lays the foundation for an AI-powered engine that detects threats in OT networks based on real attacker behavior. By deploying real PLCs and projecting them into client networks across the world, the system collects a continuous stream of authentic, high-fidelity ICS traffic, including both normal operations and malicious activity.
+
+  This dataset enables the training of machine learning models that can identify subtle anomalies, predict suspicious behavior, and issue alerts, all in real time.
+
+  **Global Traffic Intelligence:**
+
+  The centralized architecture allows passive observation of ICS attack attempts across multiple sectors and geographies, without installing hardware at each site.
+
+  Each session adds to a growing dataset that fuels both threat intelligence and AI model training
+
+  **Strategic Outcomes**
+
+  - Proactive Detection: Moves from passive monitoring to real-time, behavior-based alerts.
+
+  - Unique Dataset: Builds one of the most comprehensive ICS attack datasets using real hardware.
+
+  - Insight Generation: Tracks attacker methods and regional TTPs across industries.
+
+  - Continuous Learning: AI models improve with each new session and client added.
+
+  - Research Potential: Anonymized datasets can support academic or commercial research.
+
+  **Use Cases: Real-World Applications of AI-Powered ICS Honeypots**
+
+  The following use cases demonstrate how the platform delivers early threat detection, insider monitoring, forensic insight, and regulatory compliance in industrial environments, without disrupting production systems.
+
+  **Use Case 1 – Early Detection of Lateral Movement**
+
+  Scenario:
+  An attacker gains access to a corporate IT system via phishing and starts scanning the network for OT devices.
+
+  What happens:
+  The honeypot, projected into the DMZ, responds to Modbus and S7Comm probes. The attacker interacts with it, believing it to be a legitimate PLC.
+
+  Outcome:
+  The system detects abnormal access patterns, classifies them as reconnaissance behavior using AI, and triggers an alert before the attacker reaches real OT assets.
+
+  Value: Early warning of internal compromise, without touching production.
+
+  **Use Case 2 – Insider or Contractor Misuse**
+
+  Scenario:
+  A maintenance engineer unintentionally runs an engineering tool that scans the entire subnet, including the honeypot.
+
+  What happens:
+  The system logs the unauthorized S7Comm communication and classifies it as low-risk based on tool behavior and known IPs.
+
+  Outcome:
+  Security teams are notified of the event for auditing purposes, helping improve policy enforcement and access control.
+
+  Value: Identifies risky behavior from trusted users without generating false alarms.
+
+  **Use Case 3 – Threat Research and Red Team Simulation**
+
+  Scenario:
+  A red team simulates a targeted ICS attack using publicly available exploit tools (e.g., metasploit, s7scan, modpoll).
+
+  What happens:
+  The honeypot records every interaction at the protocol level, including attempts to write registers or initiate firmware actions.
+
+  Outcome:
+  All activity is logged, visualized, and automatically scored for severity using AI. The red team’s TTPs are mapped to MITRE ATT&CK for ICS for reporting.
+
+  Value: Allows controlled testing of organizational response and forensic workflows.
+
+  **Use Case 4 – Detection of Malware-Like Behavior**
+
+  Scenario:
+  A malware infection on a workstation silently attempts to identify and access OT devices.
+
+  What happens:
+  The malware interacts with the honeypot via Modbus over TCP, issuing malformed or unusual requests.
+
+  Outcome:
+  The system flags the traffic as highly anomalous, assigns a threat score, and alerts the client in real-time.
+
+  Value: Detects compromised endpoints and malware propagation attempts with zero false positives.
+
+  **Use Case 5 – Continuous AI Training with Diverse Global Data**
+
+  Scenario:
+  Multiple honeypots deployed via tunnel across clients in Europe, Asia, and Latin America collect varied traffic over time.
+
+  What happens:
+  Each region’s data is parsed, labeled, and ingested into the AI training pipeline, capturing new tactics, timing patterns, and payload variations.
+
+  Outcome:
+  Machine learning models continuously improve, gaining broader visibility across threat landscapes and enhancing detection accuracy for all clients.
+
+  Value: Your system becomes smarter with every client and every session.
+
+  **Use Case 6 – Compliance Support for Critical Infrastructure**
+
+  Scenario:
+  An energy company seeks to comply with the EU’s NIS2 Directive, which mandates monitoring of OT threats and early detection capabilities.
+
+  What happens:
+  The company deploys a remote honeypot via tunnel, gaining visibility into any OT-directed scanning or unauthorized access attempts.
+
+  Outcome:
+  The platform generates automatic logs, alert reports, and compliance summaries that can be used during audits.
+
+  Value: Provides a lightweight, non-intrusive way to meet regulatory detection requirements.
+
+
+
+
+
+
+# Footer
+footer_show_references: false
+# references_title: References on request (Override references text)
+
+# Build settings
+# theme: modern-resume-theme (Use this is you are hosting your resume yourself)
+# remote_theme: sproogen/modern-resume-theme (Use this if you are hosting your resume on GitHub)
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+ - jekyll-seo-tag
+
+exclude : [
+  "Gemfile",
+  "Gemfile.lock",
+  "node_modules",
+  "vendor/bundle/",
+  "vendor/cache/",
+  "vendor/gems/",
+  "vendor/ruby/",
+  "lib/",
+  "scripts/",
+  "docker-compose.yml",
+  ]
